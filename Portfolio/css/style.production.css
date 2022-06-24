@@ -1,0 +1,331 @@
+/*$a_color:0000CD;
+$a_active_color:#489c79;
+$a_visited_color:#4B0082;*/
+:root {
+  --a_color: #0000CD;
+  --a_active_color: #489c79;
+  --a_visited_color: #4B0082;
+}
+body {
+  /*Google font: Ubuntu*/
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  background-color: #FFFACD;
+  font-size: 15px;
+  line-height: 1.5;
+ text-align: center;
+ 
+}
+*{
+  box-sizing: border-box;
+}
+h1{
+  /*font weight and line height of h1*/
+  font-weight: 600;
+  line-height: 1.7;
+}
+a{
+  color: var(--a_color);
+}
+a:hover {
+  /* No underlining when hovering over a link */
+  text-decoration: none;
+
+}
+a:active {
+  /* selected link */
+  color: var(--a_active_color);
+}
+a:visited{
+  /*visited link*/
+  color: var(--a_visited_color);
+}
+.button:hover {
+  background-color: yellow;
+  /* hand cursor on mouse hover*/
+  cursor: grab;
+  border-radius: 20px ;
+
+}
+.button{
+  /*button radius*/
+  border-radius: 10px ;
+}
+.profile__portrait {
+  float: left;
+  min-width: 400px;
+  height:400px;
+  max-width: 400px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  margin-left: 30px;
+  border-radius: 50%;
+  /*text-align: center;*/
+}
+.page-footer {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.profile {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.page-header {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+}
+.page-header__item {
+  flex: 0 1 200px;
+}
+.page-header__item:last-child {
+  flex-grow: 1;
+  text-align: right;
+}
+.navigation-list {
+  list-style-type: none;
+
+}
+.navigation-list li {
+  display: inline-block;
+  padding-right: 10px;
+}
+.grid {
+  display: grid;
+  grid-template-columns:1fr 1fr ;
+  grid-template-rows:1fr 1fr ;
+  grid-gap: 20px;
+
+
+}
+.grid__item {
+  background-color: lightgray;
+  width: auto;
+  padding-bottom: 10px;
+}
+.page-content{
+
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+
+}
+.grid__item:last-child {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  }
+
+@media all and (max-width: 800px){
+  /* shared code */
+  .grid {
+   
+    grid-gap: 10px;
+  }
+  .grid__item:last-child {
+    grid-column: auto / auto;
+    grid-row: auto / auto;
+  }
+  h1 {
+    font-size: 22px;
+}
+
+}
+
+@media all and (min-width: 500px) and (max-width: 800px){
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media all and (max-width: 800px) {
+  .grid {
+    grid-gap: 10px;
+  }
+  .grid__item:last-child {
+    grid-column: auto / auto;
+    grid-row: auto / auto;
+  }
+  h1 {
+    font-size: 22px;
+  }
+}
+@media all and (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .navigation-list {
+  display: block;
+
+}
+h1{
+  font-size: 19px;
+  font-weight: 600;
+}
+h2{
+  font-size: 16px;
+  font-weight: 600;
+}
+h3{
+  font-size: 13px;
+  font-weight: 600;
+}
+}
+/*button download color */
+.button__download {
+  background-color: mediumpurple;
+  /* hand cursor on mouse hover*/
+  cursor: grab;
+  color: black;
+  padding: 10px;
+  border-radius: 3px;
+  opacity: 0.8;
+  align-items: center;
+  
+}
+/*button animation on hover*/
+.button__download:hover{
+  background-color: grey;
+  text-decoration: none;
+  transition-duration: 0.2s;
+  transition-property: opacity;
+  font-size: 1.25em;
+
+}
+.main-page{
+  padding-left:20px ;
+  align-items: center;
+  justify-content: center;
+}
+.interest-list{
+  list-style-type: none;
+  align-items: center;
+}
+.aboutme{
+text-align: center;
+align-self: center;
+}
+.interest-list li {
+  display: inline-block;
+  margin-left: 20px;
+}
+/*table center*/
+table{
+  margin-left: auto;
+  margin-right: auto;
+}
+.container
+{
+  
+  margin: 0 auto;
+  padding: 1em 0.5em;
+  text-align: center;
+}
+.container a
+{
+    color: #FFF;
+    text-decoration: none;
+   font-size: 16px;
+    margin: 0px 10px;
+    padding: 10px 10px;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+}
+/*navigation color orange*/
+.orange
+{
+    background: #ff9800
+}
+/* Pull up and down  */
+.pullUpDown a:before, div.pullUpDown a:after
+{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0px;
+    content: '';
+    background: #FFF;
+    opacity: 0.3;
+    transition: all 0.3s;
+}
+
+.pullUpDown a:before
+{
+    top: 0px;
+} 
+
+.pullUpDown a:after
+{
+    bottom: 0px;
+}
+
+.pullUpDown a:hover:before, .pullUpDown a:hover:after
+{
+    height: 100%;
+}
+@keyframes color-change {
+  from {
+    fill: #edc655;
+  }
+  to {
+    fill: #f76414;
+  }
+}
+
+.bangalore {
+  animation-duration: 4s;
+  animation-name: color-change, rotate-90;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+
+}
+@keyframes rotate-90{
+  from{
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(360deg);
+
+  }
+
+}
+
+/*cloud moving animation*/
+@keyframes move {
+  from {
+    transform: translate(0, 50px);
+  }
+  to {
+    transform: translate(200px, 50px);
+  }
+}
+ .rotate-90 {
+/*      transform: rotate(45deg);
+*/      
+  animation-duration: 4s;
+  animation-name: move, color-change ;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+    }
+
+@keyframes building-color {
+  from {
+    fill: #f7f0f0;
+  }
+  to {
+    fill: #fc0b03;
+  }
+}
+.building-color{
+   animation-duration: 1s;
+  animation-name: building-color;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+
+}
