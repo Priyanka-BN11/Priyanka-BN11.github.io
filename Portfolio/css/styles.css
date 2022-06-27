@@ -125,7 +125,10 @@ a:visited{
   h1 {
     font-size: 22px;
 }
-
+  .logo{
+    height:100px;
+    min-width: 200px;
+  }
 }
 
 @media all and (min-width: 500px) and (max-width: 800px){
@@ -143,6 +146,10 @@ a:visited{
   }
   h1 {
     font-size: 22px;
+  }
+  .logo{
+    height:90px;
+    min-width: 200px;
   }
 }
 @media all and (max-width: 500px) {
@@ -164,6 +171,14 @@ h2{
 h3{
   font-size: 13px;
   font-weight: 600;
+}
+.profile__portrait{
+  height:200px;
+  min-width: 200px;
+}
+.logo{
+  height:50px;
+  min-width: 200px;
 }
 }
 /*button download color */
