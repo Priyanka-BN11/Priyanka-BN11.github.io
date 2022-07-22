@@ -24,7 +24,9 @@ function imageDisplay(){
   let pokemonList = document.querySelector('.pokemon-list');
   pokemonList.before(img); 
 }
+
 function addListItem(pokemons) {
+  
     let ul = document.querySelector('.pokemon-list');
     //creating a list element
     let listItem = document.createElement('li');
@@ -42,11 +44,18 @@ function addListItem(pokemons) {
     listItem.appendChild(button);
     //appending listitem to ul
     ul.appendChild(listItem);
-    //adding eventlistener for button click
-    button.addEventListener('click', function(event){
-    event.preventDefault();
-    showDetails(pokemons);
-  });
+    listButtonEventListener(button, pokemons);
+    // $('[data-toggle="modal"]').on('click', function(){
+    //   showDetails();
+    //   console.log(pokemons);
+    //   let targetSelector = $(this).attr('data-target');
+    //   $(targetSelector).modal('show');
+    //   }); 
+  }
+  function listButtonEventListener(listButton, pokemon) {
+    listButton.addEventListener('click', function() {
+      showDetails(pokemon);
+    });
   }
   function loadList(){
     return fetch(apiUrl).then(function(response)
@@ -88,21 +97,24 @@ function loadDetails(pokemon){
  
     let img = new Image();
     img.src = pokemon.imageUrl;
-    let pokemonname= document.createElement('h1');
-    pokemonname.innerHTML= `<h1>Name:${pokemon.name}<h1>`;
+    let pokemonname= document.createElement('h2');
+    pokemonname.innerHTML= `<h2>Name:${pokemon.name}<h2>`;
     let pokemonheight = document.createElement('h4');
     pokemonheight.innerHTML= `<h4>Height:${pokemon.height}</h4>`;
-    let pokemonweight = document.createElement('h2');
+    let pokemonweight = document.createElement('h4');
     pokemonweight.innerHTML= `<h4>Weight:${pokemon.weight} </h4>`;
-    let pokemontypes = document.createElement('h2');
+    let pokemontypes = document.createElement('h4');
     pokemontypes.innerHTML = `<h4>Types:${pokemon.types}</h4>`;
+
     //appending elements to modal(body,title)
     modalBody.append(img);
     modalBody.append(pokemonheight);
     modalBody.append(pokemonweight);
     modalBody.append(pokemontypes);
     modalTitle.append(pokemonname);
+    
     });
+    
   }
 return {
     add: add,
@@ -117,10 +129,9 @@ return {
 //Printing the pokemon names and there height using forEach loop
 pokemonRepository.loadList().then(function(){
     pokemonRepository.getAll().forEach(function(pokemons){
-    //on pokemon name Button clicks displays pokemons details
+    //displays pokemon name Button 
     pokemonRepository.addListItem(pokemons);
+    
     }); 
 });
 pokemonRepository.imageDisplay();
-
-
