@@ -1,8 +1,7 @@
 //Array in variable pokemonRepository(in IIFE) 
 let pokemonRepository = (function () {
 let pokemonList =[ ];
-let apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
-// let button = document.createElement('button');
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=900';
 function add(pokemon){
    if (
       typeof pokemon === "object" &&
@@ -16,28 +15,27 @@ function add(pokemon){
 function getAll(){
     return pokemonList;
 }
-
-
 function addListItem(pokemons) { 
     let ul = document.querySelector('.pokemon-list');
     //creating a list element
     let listItem = document.createElement('li');
     //creating a button element
     let button = document.createElement('button');
-    button.innerText = pokemons.name;
+    button.innerText = pokemons.name.toUpperCase();
     //adding classname to button
     button.classList.add('button', 'btn', 'btn-primary');
     //adding an attributes to the button 
     button.setAttribute("data-toggle", "modal");
     button.setAttribute("data-target", "#exampleModal");
     //adding class to listItem 
-    listItem.classList.add('group-list-item');  
+    listItem.classList.add('group-list-item','list');  
     //appendng button to listItem
     listItem.appendChild(button);
     //appending listitem to ul
     ul.appendChild(listItem);
     listButtonEventListener(button, pokemons);
   }
+  
   function listButtonEventListener(listButton, pokemon) {
     listButton.addEventListener('click', function() {
       showDetails(pokemon);
@@ -63,7 +61,7 @@ function addListItem(pokemons) {
 function loadDetails(pokemon){
  let url = pokemon.detailsUrl;
  return fetch(url).then(function (response){
-    return response.json();
+    return response.json();  
 }).then(function (details){
      pokemon.imageUrl = details.sprites.front_default;
       pokemon.height = details.height;
@@ -116,5 +114,21 @@ pokemonRepository.loadList().then(function(){
     }); 
 });
 
+//search function
+function searchFunction(event) {
+  let pokemonButton = document.getElementsByClassName('button');
 
+  let filter =$('#myInput').val().toLowerCase();
+  for (let pokemonName of pokemonButton) {
+    let pokemonname = pokemonName.textContent.toLowerCase();
+    console.log(pokemonname);
+    if (pokemonname.includes(filter)) {
+      pokemonName.closest('li').style.display = 'inline-block';
+    } else {
+      pokemonName.closest('li').style.display = 'none';
+    }
+  }
+}
 
+let search = document.getElementById('myInput');
+search.addEventListener('keyup', searchFunction);
